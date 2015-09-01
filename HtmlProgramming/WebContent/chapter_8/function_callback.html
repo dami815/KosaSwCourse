@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+			//변수 선언
+			var callback = function() {}
+				console.log("함수 호출1");
+			//함수 선언(arg가 함수가 되니까 arg();로 함수 호출 가능)
+			function callTenTimes(arg) {
+				arg();
+			}
+			//함수 호출(callback에 함수가 있으니까)
+			callTenTimes(callback);
+			callTenTimes(function() {
+				console.log("함수 호출2");
+			});
+			
+		</script>
+	</head>
+	
+	<body>
+		
+	</body>
+</html>

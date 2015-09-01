@@ -1,0 +1,40 @@
+* {
+	margin: 0px;
+	padding: 0px auto;
+}
+.fullscreen {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+.top {
+	background-color: #C8C8C8;
+	/* height: 30px; */
+	text-align: center;
+}
+.middle {
+	display: flex;		
+	flex-direction: row;
+	flex: 1;
+	
+}
+.left {
+	width: 100px;
+	background-color: #E6E6E6;
+	text-align: center;
+}
+.center {
+	flex: 1;
+	text-align: center;
+	overflow-y: scroll;
+}
+.right {
+	width: 100px;
+	background-color: #E6E6E6;
+	text-align: center;
+}
+.bottom {
+	background-color: #C8C8C8;
+	text-align: center;
+	/* height: 30px; */
+}

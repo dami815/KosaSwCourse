@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+		<script type="text/javascript">
+			$(function () {
+				var id;
+				$("#btnStart").click(function() {
+					//how1
+					/* id = setInterval(function() {
+						console.log("배고프다.");
+					}, 1000); */
+					
+					//how2
+					funStart();
+				});
+				
+				function funStart() {
+					console.log("뀨뀨");
+					id = setTimeout(funStart, 1000);
+				}
+				
+				$("#btnEnd").click(function() {
+					//how1
+					//clearInterval(id);
+					
+					//how2
+					clearTimeout(id);
+				});			
+				
+			});
+		</script>
+	</head>
+	
+	<body>
+		<button id="btnStart">Start</button>
+		<button id="btnEnd">End</button>
+		<hr/>
+		<img id="image" src=""/>
+	</body>
+</html>

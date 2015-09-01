@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+			window.onload = function () {
+				var headerArray = document.querySelectorAll('h1');
+				for(i=0; i<headerArray.length; i++) {
+					var header = headerArray[i];
+				 
+					header.style.color = 'orange';
+					header.style.background = 'red';
+					header.innerHTML = 'From JavaScript';
+				}
+			};
+		</script>
+	</head>
+	
+	<body>
+		<h1>Header</h1>
+		<h1>Header</h1>
+		<h1>Header</h1>
+	</body>
+</html>
