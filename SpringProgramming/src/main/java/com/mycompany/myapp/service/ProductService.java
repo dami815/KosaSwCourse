@@ -35,4 +35,9 @@ public class ProductService {
 			productDao.delete(productNo);		
 	}
    
+   public int getTotalProductNo() {
+	   int rows = productDao.selectCount();
+	   return rows;
+   }
+   
 }

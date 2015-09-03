@@ -8,7 +8,7 @@
 		<title>Insert title here</title>
 		<style type="text/css">
 			body {
-				color: white;
+				color: black;
 			}
 			table {
 				width: 100%;
@@ -16,8 +16,8 @@
 				font-size: small;
 			}
 			table, th, td {
-				border: 1px solid white;
-				text-align: center;
+				border: 1px solid black;
+				text-align: center;				
 			}
 			th {
 				background-color: #800000;
@@ -35,7 +35,7 @@
 				line-height: 30px;
 				text-decoration: none;
 				font-size: small;
-				color: white;
+				color: black;
 				border: 1px solid darkgray;
 				background-color: gray;
 				font-weight: bold;
@@ -45,6 +45,35 @@
 				color: black;
 				background-color: lightgray;
 			}
+			
+			#pager {
+				margin: 5px;
+				font-size: small;
+				text-align: center;				
+			}
+			#pager a {
+				text-decoration: none;
+				color: black;
+			}
+			
+			#pager a:hover {
+				color: #800000;
+			}
+			
+			#pager a.pageNo.selected {
+				font-weight: bold;
+				color: #800000;
+			}
+			
+			.title {
+				text-decoration: none;
+				color: black;
+			}
+			
+			.title:hover {
+				color: #800000;
+			}
+			
 		</style>
 	</head>
 	
@@ -63,7 +92,7 @@
 			<c:forEach var="board" items="${list}">
 				<tr>
 					<td>${board.no}</td>
-					<td>${board.title}</td>
+					<td><a class="title" href="detail?boardNo=${board.no}">${board.title}</a></td>
 					<td>${board.writer}</td>
 					<td>${board.date}</td>
 					<td>${board.hitcount}</td>
@@ -72,16 +101,27 @@
 			
 		</table>
 		
+		<div id="pager">			
+			<a href="list?pageNo=1">[처음]</a>
+			
+			<c:if test="${groupNo>1}">
+				<a href="list?pageNo=${startPageNo-pagesPerGroup}">[이전]</a>	
+			</c:if>					
+			
+			<c:forEach var="i" begin="${startPageNo}" end="${endPageNo}">
+				<a class="pageNo <c:if test="${pageNo==i}">selected</c:if>" href="list?pageNo=${i}">${i}</a>
+			</c:forEach>			
+			
+			<c:if test="${groupNo<totalGroupNo}">
+				<a href="list?pageNo=${endPageNo+1}">[다음]</a>	
+			</c:if>	
+					
+			<a href="list?pageNo=${totalPageNo}">[맨끝]</a>
+		</div>
+		
 		<div id="buttonGroup">
 			<a href="writeForm">글쓰기</a>
 		</div>
 	</body>
 </html>
-
-
-
-
-
-
-
 

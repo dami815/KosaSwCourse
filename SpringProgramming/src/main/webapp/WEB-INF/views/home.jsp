@@ -14,8 +14,8 @@
 			body {
 				width: 960px;
 				margin: 0px auto;
-				background-color: #292929;
-				color: #FFFFFF;
+				background-color: #FFFFDA;
+				color: #887159;
 			}	
 			/*------------------------------------*/				
 			#page {
@@ -44,13 +44,13 @@
 			/*------------------------------------*/	
 			#content1 #login {
 				width: 250px;
-				border: 3px solid #464646;	
+				border: 3px solid #887159;	
 				border-radius: 10px;			
 			}
 			
 			#content1 #frontImage {
 				flex: 1;
-				border: 3px solid #464646;
+				border: 3px solid #887159;
 				border-radius: 10px;
 				margin-left: 10px;
 				padding: 10px;
@@ -64,7 +64,7 @@
 			/*------------------------------------*/
 			#content2 #menu {
 				width: 250px;
-				border: 3px solid #464646;	
+				border: 3px solid #887159;	
 				border-radius: 10px;
 				padding: 10px;
 				overflow-y: scroll;
@@ -83,7 +83,7 @@
 				margin: 1px 10px 1px 20px;
 				text-decoration: none;
 				font-size: small;
-				color: white;
+				color: #887159;
 			}
 			
 			#content2 #menu a:hover {
@@ -114,7 +114,7 @@
 			<div id="content1">
 				<div id="login"></div>
 				<div id="frontImage">
-					<img src="resources/image/frontImage.jpg"/>
+					<img src="resources/image/cookies-sweets-dessert.jpg"/>
 				</div>
 			</div>
 			
@@ -142,7 +142,7 @@
 			</div>
 			
 			<div id="footer">
-				<h5>DAMI KIM</h5>
+				<h5>Created By DAMI KIM</h5>
 			</div>
 		</div>
 	</body>

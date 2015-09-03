@@ -8,7 +8,7 @@
 		<style type="text/css">
 			body {
 				font-size: small;
-				color: white;
+				color: black;
 			}
 			input {
 				font-size: 12px;
@@ -17,7 +17,7 @@
 	</head>
 	<body>
 		<h4>게시물 작성하기</h4>
-		<form method="post" action="write">
+		<form method="post" action="write" enctype="multipart/form-data">
 			<table id="form_table">
 				<tr>
 					<td>제목</td>
@@ -30,7 +30,11 @@
 				<tr>
 					<td>내용</td>
 					<td><textarea rows="5" cols="50" name="content"></textarea></td>				
-				</tr>				
+				</tr>
+				<tr>
+					<td>첨부</td>
+					<td><input type="file" name="attach"/></td>				
+				</tr>							
 				<tr>
 					<td colspan="2" style="text-align: center;">
 						<br/>
