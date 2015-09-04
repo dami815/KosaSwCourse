@@ -58,13 +58,13 @@
 				console.log(modifyForm);
 				
 				//var title = document.querySelector("#title");
-				var title = document.modifyForm.title;
+				var name = document.modifyForm.name;
 				console.log(title);
 				
-				var content = document.modifyForm.content;
+				var price = document.modifyForm.price;
 				console.log(content);
 				
-				if(title.value == "" || content.value == "") {
+				if(name.value == "" || price.value == "") {
 					alert("제목과 내용을 입력해주세요.")
 					return;
 				}
@@ -74,31 +74,22 @@
 		</script>
 	</head>
 	<body>
-		<h4>게시물 보기</h4>
+		<h4>상품 보기</h4>
 				
 		<form id="modifyForm" name="modifyForm" method="post" action="update">
 			<span class="title">번호</span>
-			<span class="content">${board.no}</span> <br/>
-			<input type="hidden" name="no" value="${board.no}">
+			<span class="content">${product.no}</span> <br/>
+			<input type="hidden" name="no" value="${product.no}">
 			
-			<span class="title">제목</span> 
-			<input id="title" type="text" name="title" value="${board.title}"> <br/>
-			
-			<span class="title">글쓴이</span> 
-			<span class="content">${board.writer}</span> <br/>		
-			
-			<span class="title">날짜</span> 
-			<span class="content">${board.date}</span> <br/>
-			
-			<span class="title">조회수</span> 
-			<span class="content">${board.hitcount}</span> <br/>
-			
-			<span class="title">내용</span> <br/>
-			<textarea name="content" cols="30" rows="5">${board.content}</textarea>
+			<span class="title">품명</span> 
+			<input id="title" type="text" name="title" value="${product.name}"> <br/>
+									
+			<span class="title">가격</span>
+			<input id="price" type="number" name="price" value="${product.price}"> <br/>
 		</form> 
 		<div id="buttonGroup">			
 			<a href="javascript:sendData()">수정</a>
-			<a href="detail?boardNo=${board.no}">취소</a>
+			<a href="detail?productNo=${product.no}">취소</a>
 		</div>	
 	</body>
 </html>

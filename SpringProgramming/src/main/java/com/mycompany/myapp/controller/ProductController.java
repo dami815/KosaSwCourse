@@ -29,8 +29,10 @@ public class ProductController {
 	private ProductService productService;
 	
 	@RequestMapping("/product/list")
-	public String list(@RequestParam(defaultValue="1")int pageNo, Model model) {
+	public String list(@RequestParam(defaultValue="1")int pageNo, Model model, HttpSession session) {
 		logger.info("list()");
+		
+		session.setAttribute("pageNo", pageNo);
 		
 		//페이징을 위한 변수 선언
 		int rowsPerPage = 10;
@@ -62,8 +64,7 @@ public class ProductController {
 		model.addAttribute("totalGroupNo", totalGroupNo);
 		model.addAttribute("groupNo", groupNo);
 		model.addAttribute("startPageNo", startPageNo);
-		model.addAttribute("endPageNo", endPageNo);
-		model.addAttribute("pageNo", pageNo);
+		model.addAttribute("endPageNo", endPageNo);		
 		model.addAttribute("list", list);
 		
 		return "product/list";
@@ -76,30 +77,32 @@ public class ProductController {
 	}
 	
 	@RequestMapping("/product/updateForm")
-	public String updateForm() {
+	public String updateForm(int productNo, Model model) {
 		logger.info("updateForm()");
+		Product product = productService.getProduct(productNo);
+		model.addAttribute("product", product);
 		return "product/updateForm";
 	}
 	
 	@RequestMapping("/product/write")
-	public String write(String name, int price, MultipartFile attach, HttpSession session) {
+	public String write(Product product, HttpSession session) {
 		logger.info("write()");
 		
 		ServletContext application = session.getServletContext();
 		String dirPath = application.getRealPath("/resources/uploadfiles");
-		String originalFilename = attach.getOriginalFilename();
+		String originalFilename = product.getAttach().getOriginalFilename();
 		String filesystemName = System.currentTimeMillis() + "-" + originalFilename;
-		String contentType = attach.getContentType();
-		if(!attach.isEmpty()) {
+		String contentType = product.getAttach().getContentType();
+		if(!product.getAttach().isEmpty()) {
 			try {
-				attach.transferTo(new File(dirPath + "/" + filesystemName));
+				product.getAttach().transferTo(new File(dirPath + "/" + filesystemName));
 			} catch (Exception e) {	e.printStackTrace();}
 		}
 		
-		Product product = new Product();		
+		/*Product product = new Product();		
 		product.setName(name);
-		product.setPrice(price);
-		if(!attach.isEmpty()) {
+		product.setPrice(price);*/
+		if(!product.getAttach().isEmpty()) {
 			product.setOriginalFileName(originalFilename);
 			product.setFilesystemName(filesystemName);
 			product.setContentType(contentType);
@@ -109,9 +112,9 @@ public class ProductController {
 	}
 	
 	@RequestMapping("/product/update")
-	public String update() {
+	public String update(Product product) {
 		logger.info("update()");
-		return "redirect:/product/list";
+		return "redirect:/product/detail?productNo="+product.getNo();
 	}
 	
 	@RequestMapping("/product/detail")
@@ -120,5 +123,12 @@ public class ProductController {
 		Product product = productService.getProduct(productNo);
 		model.addAttribute("product", product);
 		return "product/detail";
+	}
+	
+	@RequestMapping("/product/delete")
+	public String delete(int productNo) {
+		logger.info("delete()");
+		productService.remove(productNo);
+		return "redirect:/product/list";
 	}
 }

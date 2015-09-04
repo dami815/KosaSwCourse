@@ -1,5 +1,7 @@
 package com.mycompany.myapp.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Product {
 private int no;
 public String getOriginalFileName() {
@@ -25,7 +27,14 @@ private int price;
 private String originalFileName;
 private String filesystemName;
 private String contentType;
+private MultipartFile attach;
 
+public MultipartFile getAttach() {
+	return attach;
+}
+public void setAttach(MultipartFile attach) {
+	this.attach = attach;
+}
 public int getNo() {
 	return no;
 }
