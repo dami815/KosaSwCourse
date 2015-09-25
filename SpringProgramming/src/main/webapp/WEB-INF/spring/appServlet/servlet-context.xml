@@ -25,5 +25,5 @@
 	
 	<!-- Multipart/form-data 포맷 해석자 등록(파일 업로드시 필요) -->
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>	
-	
+			
 </beans:beans>

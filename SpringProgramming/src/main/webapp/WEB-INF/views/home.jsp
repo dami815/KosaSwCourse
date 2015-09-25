@@ -119,12 +119,14 @@
 			</div>
 			
 			<div id="content2">
-				<div id="menu">
+				<div id="menu">					
 					<ul>
-						<h4>Chap07</h4>
-						<li><a href="#">1절. XXXXXX</a></li>
-						<li><a href="#">2절. XXXXXX</a></li>
-						<li><a href="#">3절. XXXXXX</a></li>
+						<h4>스프링 기본</h4>
+						<li><a href="chap07/index" target="iframe">Chap07: 스프링 MVC</a></li>
+						<li><a href="chap08/index" target="iframe">Chap08: 스프링 MVC: 뷰구현</a></li>
+						<li><a href="chap11/index" target="iframe">Chap11: JDBC 지원</a></li>
+						<li><a href="chap12/index" target="iframe">Chap12: 트랜잭션 관리</a></li>
+						<li><a href="#">Chap18: 스프링 단위 테스트</a></li>								
 					</ul>
 					
 					<ul>

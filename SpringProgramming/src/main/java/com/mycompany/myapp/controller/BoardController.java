@@ -1,24 +1,20 @@
 package com.mycompany.myapp.controller;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
+import java.io.*;
+import java.util.*;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import javax.servlet.*;
+import javax.servlet.http.*;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+import org.slf4j.*;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.stereotype.*;
+import org.springframework.ui.*;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.*;
 
-import com.mycompany.myapp.dto.Board;
-import com.mycompany.myapp.service.BoardService;
+import com.mycompany.myapp.dto.*;
+import com.mycompany.myapp.service.*;
 
 @Controller
 public class BoardController {
@@ -70,9 +66,10 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/board/writeForm")
-	public String writeForm() {
-		logger.info("writeForm()");
-		return "board/writeForm";
+	public ModelAndView writeForm() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("board/writeForm");
+		return mav;
 	}
 	
 	@RequestMapping("/board/updateForm")
@@ -124,15 +121,26 @@ public class BoardController {
 		return "redirect:/board/detail?boardNo="+board.getNo();		
 	}
 	
-	@RequestMapping("/board/detail")
+	/*@RequestMapping("/board/detail")
 	public String detail(int boardNo, Model model) {		
 		logger.info("detail()");
 		boardService.addHitcount(boardNo);
 		Board board = boardService.getBoard(boardNo);
 		model.addAttribute("board", board);		
 		return "board/detail";
-	}
+	}*/
 	
+	@RequestMapping("/board/detail")
+	public ModelAndView detail(int boardNo) {
+		boardService.addHitcount(boardNo);
+		Board board = boardService.getBoard(boardNo);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("board", board);
+		mav.setViewName("board/detail");
+		return mav;
+	}
+		
 	@RequestMapping("/board/delete")
 	public String delete(int boardNo) {
 		logger.info("delete()");
