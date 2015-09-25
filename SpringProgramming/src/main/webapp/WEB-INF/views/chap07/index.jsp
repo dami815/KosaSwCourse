@@ -35,5 +35,16 @@
 				<li><a href="modelAttribute2">/modelAttribute2</a></li>
 			</ul>
 		</div>
+		
+		<div>
+			<h4>@CookieValue, @RequestHeader</h4>
+			<ul>
+				<li>
+					<a href="cookieValueSet">/cookieValueSet</a>
+					<a href="cookieValueGet">/cookieValueGet</a>
+				</li>
+				<li><a href="requestHeader">/requestHeader</a></li>
+			</ul>
+		</div>
 	</body>
 </html>

@@ -2,8 +2,11 @@ package com.mycompany.myapp.controller;
 
 import java.util.*;
 
+import javax.servlet.http.*;
+
 import org.slf4j.*;
 import org.springframework.stereotype.*;
+import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.*;
 
 import com.mycompany.myapp.dto.*;
@@ -53,4 +56,32 @@ public class Chap07Controller {
 	public String modelAttribute2() {
 		return "chap07/modelAttribute2";
 	}
+	
+	
+	
+	@RequestMapping("/chap07/cookieValueSet")
+	public String cookieValueSet(HttpServletResponse response) {
+		Cookie cookie1 = new Cookie("memberId","white");
+		Cookie cookie2 = new Cookie("loginStatus","ok");
+		response.addCookie(cookie1);
+		response.addCookie(cookie2);
+		return "chap07/cookieValueSet";
+	}
+	
+	@RequestMapping("/chap07/cookieValueGet")
+	public String cookieValueGet(@CookieValue String memberId, @CookieValue String loginStatus, Model model) {
+		logger.info("memberId: " + memberId);
+		logger.info("loginStatus: " + loginStatus);
+		model.addAttribute("memberId", memberId);
+		model.addAttribute("loginStatus", loginStatus);
+		return "chap07/cookieValueGet";
+	}
+	
+	@RequestMapping("/chap07/requestHeader")
+	public String requestHeader(@RequestHeader("User-Agent") String userAgent, Model model) {
+		model.addAttribute("userAgent", userAgent);
+		return "chap07/requestHeader";
+	}
+	
 }
+
