@@ -7,6 +7,7 @@ import javax.servlet.http.*;
 import org.slf4j.*;
 import org.springframework.stereotype.*;
 import org.springframework.ui.*;
+import org.springframework.validation.*;
 import org.springframework.web.bind.annotation.*;
 
 import com.mycompany.myapp.dto.*;
@@ -83,5 +84,19 @@ public class Chap07Controller {
 		return "chap07/requestHeader";
 	}
 	
+	@RequestMapping(value="/chap07/login", method=RequestMethod.GET)
+	public String loginForm(Login login) {
+		return "chap07/loginForm";
+	}
+	
+	@RequestMapping(value="/chap07/login", method=RequestMethod.POST)
+	public String login(Login login, BindingResult bindingResult) {
+		new LoginValidator().validate(login, bindingResult);
+		if(bindingResult.hasErrors()){
+			return "chap07/loginForm";
+		}
+		//login 작업
+		return "redirect:/chap07/index";
+	}
 }
 
