@@ -91,11 +91,29 @@ public class Chap07Controller {
 	
 	@RequestMapping(value="/chap07/login", method=RequestMethod.POST)
 	public String login(Login login, BindingResult bindingResult) {
+		//유효성 검사 작업
 		new LoginValidator().validate(login, bindingResult);
 		if(bindingResult.hasErrors()){
 			return "chap07/loginForm";
 		}
 		//login 작업
+		return "redirect:/chap07/index";
+	}
+	
+	@RequestMapping(value="/chap07/join", method=RequestMethod.GET)
+	public String joinForm(Member member) {
+		return "chap07/joinForm";
+	}
+	
+	@RequestMapping(value="/chap07/join", method=RequestMethod.POST)
+	public String join(Member member, BindingResult bindingResult) {
+		//유효성 검사 작업
+		new MemberValidator().validate(member, bindingResult);
+		if(bindingResult.hasErrors()){
+			return "chap07/joinForm";
+		}
+		//join 작업
+		logger.info(member.getMemberBirthday().toString());
 		return "redirect:/chap07/index";
 	}
 }

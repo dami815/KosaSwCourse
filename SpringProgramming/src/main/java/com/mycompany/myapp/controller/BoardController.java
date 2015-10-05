@@ -147,4 +147,6 @@ public class BoardController {
 		boardService.remove(boardNo);
 		return "redirect:/board/list";
 	}
+	
+	
 }

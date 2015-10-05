@@ -51,7 +51,7 @@
 			<h4>커맨드 객체 값 검증과 에러 메시지</h4>
 			<ul>
 				<li><a href="login">Login 커맨드 값 검증</a></li>
-				<li><a href="Join">Member 커맨드 값 검증</a></li>				
+				<li><a href="join">Member 커맨드 값 검증</a></li>				
 			</ul>
 		</div>
 	</body>
