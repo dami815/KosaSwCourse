@@ -29,6 +29,14 @@
 				<li><a href="chatColor">컬러 채팅 클라이언트</a></li>
 				<li><a href="chatGroup">그룹 채팅 클라이언트</a></li>
 			</ul>
-		</div>		
+		</div>
+		
+		<div>
+			<h4>파일 업로드 및 다운로드</h4>
+			<ul>
+				<li><a href="fileUploadForm">파일 업로드</a></li>
+				<li><a href="fileInfo">파일 정보 보기</a></li>
+			</ul>
+		</div>			
 	</body>
 </html>
